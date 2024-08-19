@@ -4,10 +4,11 @@ import TodoList from './components/TodoList';
 
 function App() {
   const [todos, setTodos] = useState(() => {
-    if (JSON.parse(localStorage.todoItems) == null) return [];
+    const localValue = localStorage.getItem("ITEMS")
+    if (localValue == null) return []
 
-    return JSON.parse(localStorage.todoItems);
-  });
+    return JSON.parse(localValue)
+  })
 
   useEffect(() => {
     localStorage.setItem('todoItems', JSON.stringify(todos));
